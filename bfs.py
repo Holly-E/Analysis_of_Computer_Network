@@ -63,8 +63,8 @@ def largest_cc_size(ugraph):
     
 def compute_resilience(ugraph, attack_order):
     """ 
-    Takes undirected graph ugraph, and a list of nodes attack_order. 
-    For each attacked node, the given node and its edges are removed 
+    Takes undirected graph ugraph, and a list of nodes simulating servers: 
+    attack_order. For each attacked node, the given node and its edges are removed 
     from the graph. Then computes the size of the largest connected component 
     for the resulting graph. Returns a list whose k+1th entry is the size of 
     the largest connected component in the graph after the removal of the 
