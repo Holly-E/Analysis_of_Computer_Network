@@ -1,21 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Provided code for application portion of module 1
+Provided code for application portion of module 2
 
 Helper class for implementing efficient version
-of DPA algorithm
+of UPA algorithm
 """
 
-# general imports
 import random
 
-##NOTE TO HOLLY => SEE Codeskulptor UPA TRIAL VS THIS!!!!!!!!!!
-class DPATrial:
+class UPATrial:
     """
-    Simple class to encapsulate optimized trials for DPA algorithm
+    Simple class to encapsulate optimizated trials for the UPA algorithm
     
-    Maintains a list of node numbers with multiple instances of each number.
+    Maintains a list of node numbers with multiple instance of each number.
     The number of instances of each node number are
     in the same proportion as the desired probabilities
     
@@ -24,7 +22,7 @@ class DPATrial:
 
     def __init__(self, num_nodes):
         """
-        Initialize a DPATrial object corresponding to a 
+        Initialize a UPATrial object corresponding to a 
         complete graph with num_nodes nodes
         
         Note the initial list of node numbers has num_nodes copies of
@@ -32,15 +30,15 @@ class DPATrial:
         """
         self._num_nodes = num_nodes
         self._node_numbers = [node for node in range(num_nodes) for dummy_idx in range(num_nodes)]
-        
+
 
     def run_trial(self, num_nodes):
         """
-        Conduct num_node trials using by applying random.choice()
+        Conduct num_nodes trials using by applying random.choice()
         to the list of node numbers
         
-        Updates the list of node numbers so that the number of instances of
-        each node number is in the same ratio as the desired probabilities
+        Updates the list of node numbers so that each node number
+        appears in correct ratio
         
         Returns:
         Set of nodes
@@ -48,19 +46,25 @@ class DPATrial:
         
         # compute the neighbors for the newly-created node
         new_node_neighbors = set()
-        for dummy_idx in range(num_nodes):
+        for _ in range(num_nodes):
             new_node_neighbors.add(random.choice(self._node_numbers))
+      
         
         # update the list of node numbers so that each node number 
         # appears in the correct ratio
+        
         self._node_numbers.append(self._num_nodes)
-        #extend adds to end of a list
+        
+        for dummy_idx in range(len(new_node_neighbors)):
+            self._node_numbers.append(self._num_nodes)
         self._node_numbers.extend(list(new_node_neighbors))
-        #print(self._node_numbers)
+        
         
         #update the number of nodes
         self._num_nodes += 1
         return new_node_neighbors
     
-
+#trial = UPATrial(5)
+#print ('trial', trial._node_numbers)
+#trial.run_trial(6)
 
