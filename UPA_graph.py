@@ -9,6 +9,8 @@ Create the UPA (Undirected vs Differential Power Analysis) graph.
 """
 
 import alg_upa_trial as alg
+import helper_functions as func
+import bfs
 
 def make_complete_graph(num_nodes):
     '''
@@ -45,6 +47,12 @@ def upa(num_nodes, num_new_nodes):
     
     return upa_graph
 
+ #1239 nodes and approx 3047 edges for comp network sim
+# 3047 / 1239 = approx 2.459 edges per node
  
-#upa_graph = upa(5, 3)
-#print (upa_graph)
+upa_graph = upa(1239, 3)
+#print (func.num_edges(upa_graph))
+attack_order = func.random_order(upa_graph)
+
+upa_y = bfs.compute_resilience(upa_graph, attack_order)
+#print(upa_y)

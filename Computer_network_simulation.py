@@ -12,13 +12,14 @@ Code for loading example computer network.
 # general imports
 #import urllib2 #urllib2 not available in Python3
 from urllib.request import urlopen
-
+import bfs
+import helper_functions as func
 
 ###################################
 # Code for loading citation graph
 
-CITATION_URL = "http://storage.googleapis.com/codeskulptor-alg/alg_rf7.txt"
-import bfs
+NETWORK_URL = "http://storage.googleapis.com/codeskulptor-alg/alg_rf7.txt"
+
 
 def load_graph(graph_url):
     """
@@ -44,6 +45,12 @@ def load_graph(graph_url):
 
     return answer_graph
 
-citation_graph = load_graph(CITATION_URL)
-    
-#print(bfs.compute_resilience(citation_graph, [1346, 1129, 52])) 
+
+network_graph = load_graph(NETWORK_URL)
+#print (func.num_edges(network_graph))
+
+attack_order = func.random_order(network_graph)
+network_y = bfs.compute_resilience(network_graph, attack_order)
+#print(network_y)
+
+#print(bfs.compute_resilience(network_graph, [1346, 1129, 52])) 

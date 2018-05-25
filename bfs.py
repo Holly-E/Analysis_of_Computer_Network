@@ -71,9 +71,13 @@ def compute_resilience(ugraph, attack_order):
     first k nodes. The first entry is the size of the largest connected 
     component in the original graph.
     """
+    #print(attack_order)
     resilience = [largest_cc_size(ugraph)]
     for node in attack_order:
+        #print(node)
+        #print(ugraph)
         ugraph.pop(node)
+        #print(ugraph)
         for _dummy_key, value in ugraph.items():
             if node in value:
                 value.remove(node)
