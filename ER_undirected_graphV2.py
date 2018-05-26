@@ -43,6 +43,6 @@ er_graph = er(1239, 0.00397)
 # print( 3047 / 766941 )
 # will use .00397 as prob
 
-attack_order = func.random_order(er_graph)
+attack_order = func.fast_targeted_order(er_graph)
 er_y = bfs.compute_resilience(er_graph, attack_order)
 #print(er_y)

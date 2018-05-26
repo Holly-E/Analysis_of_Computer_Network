@@ -49,7 +49,7 @@ def load_graph(graph_url):
 network_graph = load_graph(NETWORK_URL)
 #print (func.num_edges(network_graph))
 
-attack_order = func.random_order(network_graph)
+attack_order = func.fast_targeted_order(network_graph)
 network_y = bfs.compute_resilience(network_graph, attack_order)
 #print(network_y)
 
